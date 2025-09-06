@@ -1,0 +1,327 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <title>web1</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap');
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Montserrat', sans-serif;
+        }
+
+        /* Псевдоэлемент ::selection */
+        ::selection {
+            color: #F5F5F5;
+            background-color: #E53935;
+        }
+
+        :root {
+            --background-white: #F5F5F5;
+            --light-grey: #E0E0E0;
+            --grey: #9e9e9e;
+            --black-text: #424242;
+            --blue: #48CFCB;
+            --dark-blue: #229799;
+            --red: #E53935;
+            --yellow: #FFD700;
+            --green: #BBFF74;
+        }
+
+        body {
+            background: url('Красные Галстуки.jpg') no-repeat center center fixed;
+            background-size: cover;
+            height: 110svh;
+            width: 98svw;
+            overflow: scroll;
+            scroll-behavior: smooth;
+        }
+
+        /* Добавляем класс для ошибки */
+        .wrong {
+            border: 2px solid red;
+            background-color: #ffe6e6;
+        }
+
+        /* Стиль для сообщения об ошибке */
+        .error {
+            color: red;
+            font-size: 14px;
+            margin-bottom: 5px;
+        }
+
+        #canvas {
+            border: 3px solid var(--red);
+            border-radius: 10px;
+        }
+
+        header {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 100%;
+            color: var(--yellow);
+            font-size: 1.5em;
+        }
+
+        .group-n-variant {
+            display: inline-block;
+            padding-left: 10px;
+            font-size: 1.5em;
+            color: var(--yellow);
+            font-weight: bold;
+            text-shadow: -1px -1px 0 #000, 1px -1px 0 #000, -1px 1px 0 #000, 1px 1px 0 #000;
+        }
+
+        .name {
+            color: var(--yellow);
+            font-size: 3.5em;
+            font-weight: bold;
+            padding: 2%;
+            transition: all .5s ease-in-out;
+            text-shadow: -1px -1px 0 #000, 1px -1px 0 #000, -1px 1px 0 #000, 1px 1px 0 #000;
+        }
+
+        main {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+            height: auto;
+            width: 100%;
+        }
+
+        .form {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            width: auto;
+            margin-right: 5%;
+        }
+
+        .form > div:not(.x) {
+            margin: 4%;
+        }
+
+        .x-text {
+            padding: 1%;
+        }
+
+        .x > label {
+            cursor: pointer;
+        }
+
+        input[type="text"] {
+            border: 2px solid var(--light-grey);
+            padding: 5px;
+            border-radius: 5px;
+        }
+
+        .inputs input {
+            margin-bottom: 10px;
+        }
+
+        .sendDataButton {
+            padding: 2%;
+            background-color: var(--yellow);
+            color: var(--black-text);
+            margin-top: 4%;
+            border-radius: 0;
+            border: 2px solid var(--light-grey);
+            transition: all .2s ease-in-out;
+        }
+
+        .sendDataButton {
+            background-color: var(--green);
+        }
+
+        .sendDataButton:hover {
+            background-color: var(--green);
+            color: var(--background-white);
+            border-radius: 0;
+            outline: none;
+            cursor: pointer;
+        }
+
+        .main-info {
+            display: flex;
+            flex-direction: column;
+            place-content: center;
+        }
+
+        .inputs {
+            background-color: var(--background-white);
+            display: flex;
+            flex-direction: column;
+            place-content: center;
+            border: 2px var(--yellow) solid;
+            border-radius: 0;
+            height: 300px;
+            width: 300px;
+            padding: 1%;
+            margin-top: 5%;
+        }
+
+        canvas {
+            width: 300px;
+            height: 300px;
+            border: 2px solid var(--yellow);
+            border-radius: 0;
+            background-color: var(--background-white);
+        }
+
+        .table {
+            width: 100%; /* Устанавливаем ширину таблицы */
+            table-layout: fixed; /* Фиксированная ширина столбцов */
+            border-collapse: collapse; /* Убираем промежутки между ячейками */
+            margin-left: 5%;
+            border: 2px solid var(--yellow);
+        }
+
+        .table th, .table td {
+            padding: 8px; /* Отступы внутри ячеек */
+            border: 1px solid var(--yellow); /* Границы между ячейками */
+            text-align: center; /* Выравнивание текста по центру */
+            width: 16.66%; /* Равная ширина для каждого столбца */
+        }
+
+        .table th {
+            background-color: var(--yellow);
+            color: var(--black-text);
+        }
+
+        .table td {
+            background-color: var(--background-white);
+            color: var(--black-text);
+        }
+
+        /* Задаем фиксированную высоту для tbody и добавляем прокрутку */
+        tbody {
+            display: block;
+            max-height: 300px; /* Высота таблицы для прокрутки */
+            overflow-y: auto; /* Вертикальная прокрутка */
+            width: 100%; /* Ширина для совпадения с заголовками */
+        }
+
+        thead, tbody tr {
+            display: table;
+            width: 100%;
+            table-layout: fixed;
+        }
+
+        .item {
+            height: 50px;
+            padding: 1%;
+            display: table-cell;
+            text-align: center;
+            color: var(--background-white);
+        }
+
+        .row {
+            border-top: 2px solid var(--yellow);
+        }
+
+        .item:not(:last-child) {
+            border-right: 2px solid var(--yellow);
+        }
+
+        @media only screen and (max-width: 85em) {
+            header {
+                .name {
+                    font-size: 2em;
+                }
+            }
+        }
+
+        @media only screen and (max-width: 55em) {
+            header {
+                .name {
+                    font-size: 1.5em;
+                }
+            }
+
+            main {
+                display: flex;
+                flex-direction: column;
+                align-items: center;
+
+                .inputs {
+                    padding: 4%;
+                    margin-top: 5%;
+                }
+            }
+
+            .item {
+                font-size: 0.8em;
+                width: 60px;
+            }
+
+            .table {
+                margin: 3% 0 0 0;
+            }
+
+            .table-head {
+                width: 400px;
+            }
+
+            .row {
+                width: 400px;
+            }
+        }
+    </style>
+</head>
+<body>
+<header>
+    <div class="name">Ильин Александр Александрович</div>
+    <div class="group-n-variant">P3217 408696</div>
+</header>
+
+<main>
+    <div class="main-info">
+        <div class="graph">
+            <canvas id="canvas" width="400" height="400"></canvas>
+        </div>
+        <div class="inputs" id="coordInputs">
+            <form onsubmit="submitForm(event)" class="form" method="post" autocomplete="off">
+                <p class="x-text">Изменение X (от -5 до 5):</p>
+                <div class="x">
+                    <input type="text" name="x1" id="x1" maxlength="10" autocomplete="off" required />
+                </div>
+                <p class="y-text">Изменение Y (от -3 до 3):</p>
+                <div class="y">
+                    <input type="text" name="y" id="y" maxlength="10" autocomplete="off" required />
+                </div>
+                <p class="r-text">Изменение R (от 1 до 5):</p>
+                <div class="r">
+                    <input type="checkbox" name="r" value="1"/> 1
+                    <input type="checkbox" name="r" value="2"/> 2
+                    <input type="checkbox" name="r" value="3"/> 3
+                    <input type="checkbox" name="r" value="4"/> 4
+                    <input type="checkbox" name="r" value="5"/> 5
+                </div>
+                <button type="submit" class="sendDataButton">Отправить данные</button>
+            </form>
+        </div>
+    </div>
+    <table class="table" id="table">
+        <thead class="table-head">
+        <tr>
+            <th scope="col" class="item">X</th>
+            <th scope="col" class="item">Y</th>
+            <th scope="col" class="item">R</th>
+            <th scope="col" class="item">Статус</th>
+            <th scope="col" class="item">Время выполнения</th>
+            <th scope="col" class="item">Дата выполнения</th>
+        </tr>
+        </thead>
+        <tbody id="table-body">
+        </tbody>
+    </table>
+</main>
+
+<script src="canvas.js"></script>
+<script src="scripts.js"></script>
+</body>
+</html>

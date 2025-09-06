@@ -1,0 +1,57 @@
+.main-page {
+    min-height: 100vh;
+    position: relative;
+    overflow: hidden;
+}
+
+.main-content {
+    position: relative;
+    z-index: 1;
+    padding: 24px;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.content-grid {
+    display: grid;
+    gap: 24px;
+    grid-template-columns: 1fr;
+    padding: 24px;
+}
+
+@media (min-width: 1024px) {
+    .content-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+    .results-section {
+        grid-column: span 2;
+    }
+}
+
+.form-section,
+.graph-section,
+.results-section {
+    opacity: 0;
+    transform: translateY(20px);
+    animation: fadeInUp 0.6s ease forwards;
+}
+
+.graph-section {
+    animation-delay: 0.2s;
+}
+
+.results-section {
+    animation-delay: 0.4s;
+}
+
+@keyframes fadeInUp {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}

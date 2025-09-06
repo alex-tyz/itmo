@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>JSP LAB</title>
+    <link rel="stylesheet" href="stylings.css">
+    <script src="scripts.js" defer></script>
+    <script src="area.js" defer></script>
+</head>
+<body>
+<header>
+    <div class="profile-header">
+        <p> Ильин Александр Александрович</p>
+        <p>P3217</p>
+        <p>51509</p>
+    </div>
+
+</header>
+<main>
+    <div class="main-info">
+        <div class="graph">
+            <canvas id="canvas"></canvas>
+        </div>
+        <div class="inputs" id="coordInputs">
+            <form method="POST" onsubmit="submitForm(event)" class="form" autocomplete="off">
+                <!-- X Buttons -->
+                <div class="x">
+                    <p class="x-text">X: </p>
+                    <div class="x-inputs">
+                        <button class="xbtn" type="button" value="-4" >-4</button>
+                        <button class="xbtn" type="button" value="-3">-3</button>
+                        <button class="xbtn" type="button" value="-2">-2</button>
+                        <button class="xbtn" type="button" value="-1">-1</button>
+                        <button class="xbtn" type="button" value="0">0</button>
+                        <button class="xbtn" type="button" value="1">1</button>
+                        <button class="xbtn" type="button" value="2">2</button>
+                        <button class="xbtn" type="button" value="3">3</button>
+                        <button class="xbtn" type="button" value="4">4</button>
+                    </div>
+                </div>
+                <!-- Y Input -->
+                <div class="y-container">
+                    <label for="y">Y:</label>
+                    <input type="text" id="y" name="y" step="0.1" placeholder="Введите Y (-5 до 5)" required min="-5" max="5" maxlength="6">
+                </div>
+                <!-- R Checkbox -->
+                <div class="r">
+                    <p class="r-text">R:</p>
+                    <select id = "rselect">
+                        <option value="1" selected>1</option>
+                        <option value="2">2</option>
+                        <option value="3">3</option>
+                        <option value="4">4</option>
+                        <option value="5">5</option>
+                    </select>
+                </div>
+                <button type="submit" class="sendDataButton">ОТПРАВИТЬ</button>
+            </form>
+        </div>
+    </div>
+    <table class="table" id="table">
+        <thead class="table-head">
+        <tr>
+            <th scope="col" class="item">X</th>
+            <th scope="col" class="item">Y</th>
+            <th scope="col" class="item">R</th>
+            <th scope="col" class="item">СТАТУС</th>
+            <th scope="col" class="item">ВРЕМЯ ВЫПОЛНЕНИЯ</th>
+            <th scope="col" class="item">ВРЕМЯ ВЫПОЛНЕНИЯ СКРИПТА</th>
+        </tr>
+        </thead>
+        <tbody id="table-body">
+        
+        </tbody>
+    </table>
+   
+
+</main>
+</body>
+</html>

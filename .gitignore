@@ -1,0 +1,21 @@
+# Node.js
+node_modules/
+dist/
+build/
+
+# Java
+target/
+out/
+*.iml
+.gradle/
+.idea/
+
+# Python
+__pycache__/
+*.pyc
+.venv
+.env
+
+# ОС
+.DS_Store
+Thumbs.db

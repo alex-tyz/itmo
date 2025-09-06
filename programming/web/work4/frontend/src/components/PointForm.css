@@ -1,0 +1,112 @@
+.point-form-container {
+    background: rgba(255, 255, 255, 0.8);
+    backdrop-filter: blur(20px);
+    border-radius: 12px;
+    padding: 24px;
+    box-shadow: 0 2px 12px rgba(0, 0, 0, 0.05);
+    max-width: 600px;
+    margin: 0 auto;
+    border: 1px solid rgba(0, 0, 0, 0.1);
+}
+
+.point-form-container h2 {
+    margin: 0 0 24px;
+    font-size: 24px;
+    font-weight: 500;
+    color: #1d1d1f;
+}
+
+.point-form {
+    display: flex;
+    flex-direction: column;
+    gap: 24px;
+}
+
+.form-group {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+
+.form-group label {
+    font-size: 14px;
+    font-weight: 500;
+    color: #1d1d1f;
+}
+
+.button-grid {
+    display: grid;
+    gap: 8px;
+    grid-template-columns: repeat(auto-fit, minmax(40px, 1fr));
+}
+
+.r-grid {
+    grid-template-columns: repeat(5, 1fr);
+}
+
+.value-button {
+    background: transparent;
+    border: 1px solid rgba(0, 0, 0, 0.1);
+    border-radius: 6px;
+    padding: 8px;
+    font-size: 14px;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    color: #1d1d1f;
+}
+
+.value-button:hover {
+    background: rgba(0, 0, 0, 0.05);
+    border-color: rgba(0, 0, 0, 0.2);
+    transform: translateY(-1px);
+}
+
+.value-button.selected {
+    background: #0071e3;
+    color: white;
+    border-color: #0071e3;
+    transform: scale(1.05);
+}
+
+input {
+    padding: 12px;
+    border: 1px solid rgba(0, 0, 0, 0.1);
+    border-radius: 6px;
+    font-size: 14px;
+    transition: all 0.2s ease;
+    font-family: "SF Mono", SFMono-Regular, ui-monospace, monospace;
+}
+
+input:focus {
+    outline: none;
+    border-color: #0071e3;
+    box-shadow: 0 0 0 3px rgba(0, 113, 227, 0.1);
+}
+
+.error {
+    color: #c92a2a;
+    font-size: 12px;
+    margin-top: 4px;
+}
+
+.submit-button {
+    background: #0071e3;
+    color: white;
+    border: none;
+    border-radius: 6px;
+    padding: 12px;
+    font-size: 14px;
+    font-weight: 500;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    margin-top: 8px;
+}
+
+.submit-button:hover {
+    background: #0077ed;
+    transform: translateY(-1px);
+}
+
+.submit-button:active {
+    transform: translateY(0);
+}
